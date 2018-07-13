@@ -13,15 +13,11 @@ app.use(express.static(path.join(__dirname, 'public')));
 let clientSocket;
 
 app.get('/person/:name', (req, res) => {
-  clientSocket.emit('song', {
+  io.emit('song', {
     ...videos[req.params.name],
     label: req.params.name,
   });
   res.status(200).json({success: true});
-});
-
-io.on('connection', function (socket) {
-  clientSocket = socket;
 });
 
 
