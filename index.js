@@ -236,8 +236,8 @@ const videos = {
   },
 
   Lincoln: {
-    id: 'M48nlk-1kH8',
-    t: 9,
+    id: 'm9We2XsVZfc',
+    t: 12,
     name: 'Lincoln Anderson'
   },
 
