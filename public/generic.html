@@ -9,9 +9,6 @@
 			<link rel="stylesheet" href="css/font-awesome.min.css">
 			<link rel="stylesheet" href="css/bootstrap.css">
 			<link rel="stylesheet" href="css/main.css">
-    <script src="//cdnjs.cloudflare.com/ajax/libs/socket.io/2.1.1/socket.io.dev.js"></script>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery-tubeplayer/2.1.0/jquery.tubeplayer.min.js"></script>
 		</head>
 		<body>
 
@@ -27,8 +24,7 @@
 					<div class="row height align-items-center justify-content-center">
 						<div class="col-lg-10">
 							<div class="generic-banner-content">
-										        <img src="img/hooked_logo.png" height="200px" alt="" title="" />
-
+								<img src="img/hooked_logo.png"/>
 								<p class="text-white">The fishiest onboarding experience ever created.</p>
 								<img src="img/audio.gif" height="100px" alt="" title="" />
 							</div>
@@ -49,7 +45,6 @@
 							<p>What better way to get to know the coworkers in your office than to hear each person's personalized walk-in song day in and day out? Any time a current employee walks into the office, their specific entrance music plays. It's impossible to forget a fellow employee's name or face when there's an awesome song associated with them. Not to mention, it makes a great conversation topic for new hires to get to know everyone in their office. </p>
 				</div>
 			</div>
-      <div id="video-player"></div>
 		</section>
 			<!-- End Generic Start -->
 
@@ -63,22 +58,8 @@
 					<img src="img/erin.png" height="50px" alt="" title="" />
 					<img src="img/lincoln.png" height="50px" alt="" title="" />
 					<img src="img/sophie.png" height="50px" alt="" title="" />
-      </center>
+				</div>
 			</footer>
 			<!-- End footer Area -->
-      <script>
-        var socket = io.connect(window.location.protocol + '//' + window.location.host);
-        $('#video-player').hide();
-        socket.on('song', function (data) {
-          console.log(data);
-          $("#video-player").tubeplayer("destroy");
-          $("#video-player").tubeplayer({
-            initialVideo: data.id,
-            onPlayerLoaded: function(){
-              this.tubeplayer("play");
-            },
-          });
-        });
-      </script>
 		</body>
 	</html>
