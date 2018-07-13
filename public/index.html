@@ -67,18 +67,58 @@
 			</footer>
 			<!-- End footer Area -->
       <script>
+        var busy = false;
+        var audio = null;
+
+        var audioFiles = {
+          Andi: 'andi.ogg',
+          Andrea: 'andrea.ogg',
+          Andrew: 'andrew.ogg',
+          Brad: 'brad.ogg',
+          Danny: 'danny.ogg',
+          Eran: 'eran.ogg',
+          Garry: 'garry.ogg',
+          Jeremy: 'jeremy.ogg',
+          Kierra: 'kiera.ogg',
+          Logan: 'logan.ogg',
+          Lori: 'lori.ogg',
+          Magbic: 'magbic.ogg',
+          Sarah: 'sarah.ogg',
+          Scott: 'scott.ogg',
+        };
+
+        function loadAudio(person) {
+          if (!busy) {
+            busy = true;
+						audio = new Audio('audiofiles/' + audioFiles[person]);
+            audio.addEventListener('ended', function() {
+              busy = false;
+            });
+            // audio.volume = 1;
+            audio.play();
+          }
+        }
+
         var socket = io.connect(window.location.protocol + '//' + window.location.host);
-        $('#video-player').hide();
+        var player = $('#video-player');
+        player.hide();
         socket.on('song', function (data) {
           console.log(data);
-          $("#video-player").tubeplayer("destroy");
-          $("#video-player").tubeplayer({
-            initialVideo: data.id,
-            onPlayerLoaded: function(){
-              this.tubeplayer("play");
-              this.tubeplayer("seek", data.t);
-            },
-          });
+
+          player.tubeplayer("destroy");
+
+          if (audioFiles[data.label]) {
+            loadAudio(data.label)
+					} else {
+            audio.pause();
+            player.tubeplayer({
+              initialVideo: data.id,
+              onPlayerLoaded: function(){
+                this.tubeplayer("play");
+                this.tubeplayer("seek", data.t);
+              },
+            });
+					}
         });
       </script>
 		</body>
