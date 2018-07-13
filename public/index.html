@@ -107,34 +107,37 @@
 
         var socket = io.connect(window.location.protocol + '//' + window.location.host);
         var player = $('#video-player');
+        var currentPerson = '';
         player.hide();
         socket.on('song', function (data) {
           console.log(data);
+          if (currentPerson !== data.name) {
+            currentPerson = data.name;
+            messageContainer.addClass('message-displayed');
+            messageName.text(data.name + '\'s Here!');
+            player.tubeplayer("destroy");
 
-          messageContainer.addClass('message-displayed');
-          messageName.text(data.name + '\'s Here!');
-          player.tubeplayer("destroy");
-
-          if (window.location.hash === '#fish') {
-            if (audioFiles[data.label]) {
-              loadAudio(data.label)
-            }
-					} else {
-            if (audio) {
-              audio.pause();
-              busy = false;
-            }
-						player.tubeplayer({
-							initialVideo: data.id,
-							onPlayerLoaded: function(){
-								this.tubeplayer("play");
-								this.tubeplayer("seek", data.t);
-							},
-							onPlayerEnded: function() {
-                messageContainer.removeClass('message-displayed');
+            if (window.location.hash === '#fish') {
+              if (audioFiles[data.label]) {
+                loadAudio(data.label)
               }
-						});
-					}
+            } else {
+              if (audio) {
+                audio.pause();
+                busy = false;
+              }
+              player.tubeplayer({
+                initialVideo: data.id,
+                onPlayerLoaded: function(){
+                  this.tubeplayer("play");
+                  this.tubeplayer("seek", data.t);
+                },
+                onPlayerEnded: function() {
+                  messageContainer.removeClass('message-displayed');
+                }
+              });
+            }
+          }
         });
       </script>
 		</body>
