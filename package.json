@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "node index.js"
+    "start": "node index.js",
+    "dev": "nodemon index.js"
   },
   "author": "352inc <devops@352inc.com> (http://352inc.com)",
   "license": "ISC",
@@ -12,5 +13,8 @@
     "cors": "^2.8.4",
     "express": "^4.16.3",
     "socket.io": "^2.1.1"
+  },
+  "devDependencies": {
+    "nodemon": "^1.18.2"
   }
 }
