@@ -112,6 +112,7 @@
 					} else {
             if (audio) {
               audio.pause();
+              busy = false;
             }
             if (window.location.hash !== '#fish') {
               player.tubeplayer({
