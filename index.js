@@ -78,7 +78,7 @@ const videos = {
 
   Rich_B: {
     id: 'wv-34w8kGPM',
-    t: 4,
+    t: 8,
   },
 
   Sarah_B: {
