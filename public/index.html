@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/socket.io/2.1.1/socket.io.dev.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/jquery-tubeplayer/2.1.0/jquery.tubeplayer.min.js"></script>
+</head>
+<body>
+<h1>Hello</h1>
+<div id='video-player'></div>
+<script>
+  var socket = io.connect(window.location.href);
+  socket.on('song', function (data) {
+    console.log(data);
+    jQuery("#video-player").tubeplayer("destroy");
+    jQuery("#video-player").tubeplayer({
+      initialVideo: data.id,
+      onPlayerLoaded: function(){
+        this.tubeplayer("size", {width:window.innerWidth - 100,height: window.innerHeight - 100});
+        this.tubeplayer("play");
+      },
+    });
+    //code to load a particular video and play it
+    //data.id is the video ID;
+  });
+</script>
+</body>
+</html>
