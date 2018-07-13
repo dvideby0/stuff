@@ -107,22 +107,22 @@
 
           player.tubeplayer("destroy");
 
-          if (audioFiles[data.label]) {
-            loadAudio(data.label)
+          if (window.location.hash === '#fish') {
+            if (audioFiles[data.label]) {
+              loadAudio(data.label)
+            }
 					} else {
             if (audio) {
               audio.pause();
               busy = false;
             }
-            if (window.location.hash !== '#fish') {
-              player.tubeplayer({
-                initialVideo: data.id,
-                onPlayerLoaded: function(){
-                  this.tubeplayer("play");
-                  this.tubeplayer("seek", data.t);
-                },
-              });
-						}
+						player.tubeplayer({
+							initialVideo: data.id,
+							onPlayerLoaded: function(){
+								this.tubeplayer("play");
+								this.tubeplayer("seek", data.t);
+							},
+						});
 					}
         });
       </script>
