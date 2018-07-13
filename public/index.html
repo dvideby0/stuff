@@ -99,6 +99,7 @@
             audio.addEventListener('ended', function() {
               busy = false;
               messageContainer.removeClass('message-displayed');
+              currentPerson = '';
             });
             // audio.volume = 1;
             audio.play();
@@ -134,6 +135,7 @@
                 },
                 onPlayerEnded: function() {
                   messageContainer.removeClass('message-displayed');
+                  currentPerson = '';
                 }
               });
             }
