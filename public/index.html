@@ -113,13 +113,15 @@
             if (audio) {
               audio.pause();
             }
-            player.tubeplayer({
-              initialVideo: data.id,
-              onPlayerLoaded: function(){
-                this.tubeplayer("play");
-                this.tubeplayer("seek", data.t);
-              },
-            });
+            if (window.location.hash !== '#fish') {
+              player.tubeplayer({
+                initialVideo: data.id,
+                onPlayerLoaded: function(){
+                  this.tubeplayer("play");
+                  this.tubeplayer("seek", data.t);
+                },
+              });
+						}
 					}
         });
       </script>
