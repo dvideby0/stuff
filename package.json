@@ -9,6 +9,7 @@
   "author": "352inc <devops@352inc.com> (http://352inc.com)",
   "license": "ISC",
   "dependencies": {
+    "cors": "^2.8.4",
     "express": "^4.16.3",
     "socket.io": "^2.1.1"
   }

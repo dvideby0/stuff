@@ -75,6 +75,7 @@
           $("#video-player").tubeplayer({
             initialVideo: data.id,
             onPlayerLoaded: function(){
+              this.tubeplayer("seek", data.t);
               this.tubeplayer("play");
             },
           });

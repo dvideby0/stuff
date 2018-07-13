@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zxx">
+<head>
+  <meta content="width=device-width, initial-scale=1, shrink-to-fit=no" name="viewport">
+  <meta charset="UTF-8">
+  <title>Hooked on 352 Recorder</title>
+  <link href="https://fonts.googleapis.com/css?family=Poppins:100,200,400,300,500,600,700" rel="stylesheet">
+  <link href="css/font-awesome.min.css" rel="stylesheet">
+  <link href="css/bootstrap.css" rel="stylesheet">
+  <link href="css/main.css" rel="stylesheet">
+</head>
+<body>
+<header id="home">
+  <div class="container">
+    <div class="row align-items-center justify-content-between d-flex"></div>
+  </div>
+</header>
+<section class="generic-banner relative">
+  <div class="container">
+    <div class="row height align-items-center justify-content-center">
+      <div class="col-lg-10">
+        <div class="generic-banner-content">
+          <img alt="" height="200px" src="img/hooked_logo.png" title="">
+          <p class="text-white">Record a personalized message for a new 352 employee! This message will be played by the Big Mouth Billy Bass any time this employee walks through the door. </p>
+          <div class="record-controls">
+            <div class="form-group">
+              <bold><label class='text-white' for="Employee">NEW EMPLOYEE</label></bold>
+              <select class="form-control employee-select" name="language" id="language">
+                <option value="Sarah Barnett">Sarah Barnett</option>
+                <option value="Danny Barreto">Danny Barreto</option>
+                <option value="Andi Freeman">Andi Freeman</option>
+                <option value="Kierra Greene">Kierra Greene</option>
+                <option value="Andrew Mimault">Andrew Mimault</option>
+                <option value="Andrea Mausser">Andrea Mausser</option>
+                <option value="Rich Goidel">Rich Goidel</option>
+                <option value="Logan Sobczak">Logan Sobczak</option>
+              </select>
+            </div>
+            <br>
+            <i aria-hidden="true" class="fa fa-5x fa-microphone" id="start"></i>
+          </div>
+          <br>
+          <div class="buttons">
+            <button class="btn btn-success" id="submit" type="submit">Submit</button> <button class="btn btn-primary" disabled="true" id="play">Play</button>
+          </div>
+          <p class="text-success" id="post-success"></p>
+        </div><audio controls="false" id="recorded-audio" src=""></audio>
+      </div>
+    </div>
+  </div>
+</section>
+</body>
+</html>
