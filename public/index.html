@@ -75,6 +75,12 @@
         var messageContainer = $('.message');
         var messageName = $('.message-name');
 
+        var office = prompt('Please enter your office abbreviation. (e.g. GNV, TPA, ATL, etc). This must match the code set in your player(s).');
+        if (!office) {
+          alert('You must set an office abbreviation in the URL.\ne.g. http://ho-player.352.li/#gnv');
+          throw new Error('No office set.');
+        }
+
         var audioFiles = {
           Andi: 'andi.ogg',
           Andrea: 'andrea.ogg',
@@ -112,6 +118,12 @@
         player.hide();
         socket.on('song', function (data) {
           console.log(data);
+
+          if (data.office !== office) {
+            console.log('ignoring entrance event from other office', data.office);
+            return;
+          }
+
           if (currentPerson !== data.name) {
             currentPerson = data.name;
             messageContainer.addClass('message-displayed');

@@ -13,7 +13,9 @@ app.use(express.static(path.join(__dirname, 'public')));
 let clientSocket;
 
 app.get('/person/:name', (req, res) => {
+  const office = req.query.office;
   io.emit('song', {
+    office,
     ...videos[req.params.name],
     label: req.params.name,
   });
